@@ -13,7 +13,7 @@ namespace Qrng {
         return MResetZ(q);
     }
 
-    operation SampleRandomNumberInRange(bitsNumber: Int) : BigInt {
+    operation SampleRandomNumberByBitSize(bitsNumber: Int) : BigInt {
         mutable bits = new Result[0];
         for idxBit in 1..bitsNumber {
             set bits += [SampleQuantumNumberGenerator()];
@@ -31,7 +31,7 @@ namespace Qrng {
     @EntryPoint()
     operation SampleRandomNumber() : BigInt {
         let bitsNumber = 512;
-        Message($"Sampling a random number between 0 and {bitsNumber}: ");
-        return SampleRandomNumberInRange(bitsNumber);
+        Message($"Sampling a random {bitsNumber}bit number: ");
+        return SampleRandomNumberByBitSize(bitsNumber);
     }
 }
